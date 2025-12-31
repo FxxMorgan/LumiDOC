@@ -367,8 +367,6 @@ Tareas:
 - 🚫 Día 4: No disponible (1 ene)
 - ⏳ Día 5: Autenticación JWT (viernes 2 ene)
 
-**Tiempo estimado:** 40% del proyecto completado
-
 ---
 
 **Estado final:** ✅ DÍA 2 COMPLETADO  
