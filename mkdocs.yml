@@ -1,0 +1,89 @@
+site_name: LumiDOC - Sistema Luminova
+site_description: Documentación del Sistema Luminova - Dashboard de Monitoreo Energético Multi-tenant
+site_author: FxxMorgan
+site_url: https://fxxmorgan.github.io/LumiDOC
+
+theme:
+  name: material
+  language: es
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.follow
+    - toc.integrate
+    - content.code.copy
+    - content.code.annotate
+
+  icon:
+    repo: fontawesome/brands/github
+
+repo_name: FxxMorgan/LumiDOC
+repo_url: https://github.com/FxxMorgan/LumiDOC
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+plugins:
+  - search:
+      lang: es
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/FxxMorgan/LumiDOC
+      name: LumiDOC en GitHub
+
+nav:
+  - Inicio: index.md
+  - Roadmap: roadmap.md
+  - Progreso por Días:
+    - Día 1 - Setup Inicial: dias/dia-1.md
+    - Día 2 - Modelos de Datos: dias/dia-2.md
+    - Día 3 - Autenticación JWT: dias/dia-3.md
+    - Día 4 - API REST Core: dias/dia-4.md
+    - Día 5 - Importador Legacy: dias/dia-5.md
+  - Documentación Técnica:
+    - Importador Legacy: tecnica/importador.md
