@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminova | Estrategia de Infraestructura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 
+        Palette: Vibrant Tech
+        Primary: #2563EB (Royal Blue)
+        Secondary: #10B981 (Emerald Green)
+        Accent: #8B5CF6 (Violet)
+        Background: #F3F4F6 (Cool Gray)
+        Text: #1F2937 (Gray 900)
+    -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lumi: {
+                            blue: '#2563EB',
+                            green: '#10B981',
+                            dark: '#111827',
+                            light: '#F3F4F6',
+                            accent: '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;
+            color: #1F2937;
+        }
+
+        /* Responsive Chart Container Styles */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+    <!-- 
+        Plan Narrative & Structure Summary:
+        1. Introduction: High-level status (92% complete) and the core decision (Oracle Cloud).
+        2. Data Overview (Infrastructure): Comparative analysis of VPS options focusing on RAM per dollar.
+        3. Key Trends (System Health): Visualizing security scores and test coverage.
+        4. Deployment Roadmap: A phased timeline for rollout.
+        5. Conclusion: Final recommendation by the Technical Lead.
+     -->
+</head>
+<body class="antialiased">
+
+    <!-- Navigation / Header -->
+    <nav class="bg-lumi-dark text-white sticky top-0 z-50 shadow-lg border-b-4 border-lumi-blue">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-tighter text-lumi-blue">LUMINOVA</span>
+                <span class="text-sm font-light opacity-80 border-l pl-2 border-gray-600">Reporte de Infraestructura</span>
+            </div>
+            <div class="hidden md:block text-xs font-mono bg-gray-800 px-3 py-1 rounded-full text-lumi-green">
+                ESTADO: LISTO PARA PRODUCCIÓN
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white pb-12 pt-16 px-6">
+        <div class="container mx-auto max-w-5xl text-center">
+            <div class="inline-block bg-lumi-blue/10 text-lumi-blue font-bold px-4 py-1 rounded-full mb-4 text-sm">
+                FECHA: 27 ENERO 2026
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 text-lumi-dark leading-tight">
+                Estrategia de Despliegue <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-lumi-blue to-lumi-green">
+                    Optimización & Escala
+                </span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+                Análisis técnico para el lanzamiento del sistema de monitoreo trifásico. 
+                <strong class="text-lumi-blue">92% de madurez técnica</strong> alcanzada tras 23 días de desarrollo intensivo.
+            </p>
+            
+            <!-- Key Stat Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl font-black text-lumi-blue">OpEx</div>
+                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-wide mb-2">Costos Operativos</h3>
+                    <div class="text-4xl font-black text-lumi-green">$0.00</div>
+                    <p class="text-xs text-gray-400 mt-2">Reducción del 100% inicial</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-wide mb-2">Madurez Técnica</h3>
+                    <div class="text-4xl font-black text-lumi-blue">92%</div>
+                    <p class="text-xs text-gray-400 mt-2">Listo para Producción</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-wide mb-2">Score Seguridad</h3>
+                    <div class="text-4xl font-black text-purple-600">A+</div>
+                    <p class="text-xs text-gray-400 mt-2">Defensa en Profundidad</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section: Comparative Analysis -->
+    <section class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Narrative -->
+                <div>
+                    <h2 class="text-3xl font-bold text-lumi-dark mb-6 border-l-4 border-lumi-blue pl-4">
+                        La Batalla por la RAM
+                    </h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        Luminova procesa flujos de datos UDP en tiempo real y utiliza un sistema de <strong>Batch Processing en memoria</strong>. La elección del servidor es crítica: necesitamos RAM masiva para evitar cuellos de botella durante picos de tráfico.
+                    </p>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        Analizamos proveedores líderes. Mientras la competencia ofrece entre 1GB y 4GB en sus planes de entrada, <strong>Oracle Cloud</strong> destaca con una arquitectura ARM que nos entrega <strong>24GB de RAM</strong> sin costo.
+                    </p>
+
+                    <!-- Stat highlight -->
+                    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 flex items-start space-x-4">
+                        <div class="bg-lumi-blue text-white rounded-full p-2 mt-1">
+                            <!-- Unicode Info Icon -->
+                            &#8505;
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lumi-blue">Dato Crítico</h4>
+                            <p class="text-sm text-gray-600">Oracle ofrece <strong>6x más memoria</strong> que su competidor más cercano y <strong>24x más</strong> que el estándar de $6 USD.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualization -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Comparativa de Memoria (GB) vs Costo</h3>
+                    <p class="text-xs text-gray-400 mb-6">Planes de Entrada / Capa Gratuita</p>
+                    
+                    <!-- Chart Container -->
+                    <div class="chart-container">
+                        <canvas id="ramChart"></canvas>
+                    </div>
+                    
+                    <!-- Choices Summary HTML (No SVG) -->
+                    <div class="mt-6 grid grid-cols-3 gap-2 text-center text-xs">
+                        <div class="p-2 bg-gray-100 rounded">
+                            <span class="block font-bold">DigitalOcean</span>
+                            <span class="text-gray-500">$6.00/mes</span>
+                        </div>
+                        <div class="p-2 bg-gray-100 rounded">
+                            <span class="block font-bold">Hetzner</span>
+                            <span class="text-gray-500">€4.50/mes</span>
+                        </div>
+                        <div class="p-2 bg-lumi-green/10 text-lumi-green border border-lumi-green rounded">
+                            <span class="block font-bold">Oracle Cloud</span>
+                            <span class="font-bold">$0.00/mes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: System Health -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-3xl font-bold text-lumi-dark mb-12 text-center">
+                Signos Vitales del Sistema
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- KPI 1: Security -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 relative">
+                    <div class="absolute top-4 right-4 text-2xl">🛡️</div>
+                    <h3 class="text-xl font-bold mb-2">Seguridad</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">Implementación de Helmet, CSRF, Rate Limiting y validación estricta de headers.</p>
+                    
+                    <div class="chart-container" style="height: 200px;">
+                        <canvas id="securityChart"></canvas>
+                    </div>
+                    <div class="text-center mt-[-140px] mb-[80px]">
+                        <span class="text-3xl font-black text-gray-800">92/100</span>
+                    </div>
+                </div>
+
+                <!-- KPI 2: Test Coverage -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 relative">
+                    <div class="absolute top-4 right-4 text-2xl">🧪</div>
+                    <h3 class="text-xl font-bold mb-2">Calidad de Código</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">Cobertura total de pruebas unitarias y de integración. Código estable.</p>
+                    
+                    <!-- Custom HTML Visualization for Stats (No SVG) -->
+                    <div class="flex flex-col items-center justify-center h-[200px]">
+                         <div class="w-full bg-gray-200 rounded-full h-6 mb-4 overflow-hidden relative">
+                             <div class="bg-lumi-blue h-6 rounded-full" style="width: 100%"></div>
+                             <span class="absolute inset-0 flex items-center justify-center text-xs text-white font-bold">78/78 TESTS PASSED</span>
+                         </div>
+                         <div class="grid grid-cols-2 gap-4 w-full text-center">
+                             <div class="bg-white p-3 rounded shadow-sm">
+                                 <div class="text-2xl font-bold text-lumi-green">100%</div>
+                                 <div class="text-xs text-gray-400">Success Rate</div>
+                             </div>
+                             <div class="bg-white p-3 rounded shadow-sm">
+                                 <div class="text-2xl font-bold text-gray-800">23</div>
+                                 <div class="text-xs text-gray-400">Días Dev</div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- KPI 3: Performance -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 relative">
+                    <div class="absolute top-4 right-4 text-2xl">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Rendimiento</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">Optimización de latencia mediante compresión Gzip y caché inteligente.</p>
+                    
+                    <div class="chart-container" style="height: 200px;">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Roadmap -->
+    <section class="py-16 bg-lumi-dark text-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold mb-12 text-center">Hoja de Ruta de Despliegue</h2>
+            
+            <!-- Vertical Timeline (HTML/CSS) -->
+            <div class="relative border-l-4 border-gray-700 ml-4 md:ml-0 md:pl-0 space-y-12">
+                
+                <!-- Item 1 -->
+                <div class="relative pl-8 md:pl-0">
+                    <!-- Dot -->
+                    <div class="absolute -left-3 md:left-[50%] md:-ml-3 top-0 w-6 h-6 bg-lumi-blue rounded-full border-4 border-gray-900 z-10"></div>
+                    
+                    <div class="md:flex justify-between items-start">
+                        <div class="md:w-[45%] md:text-right md:pr-8 mb-2 md:mb-0">
+                             <h3 class="text-xl font-bold text-lumi-blue">Fase 1: Aprovisionamiento</h3>
+                             <span class="text-sm text-gray-400">Infraestructura Base</span>
+                        </div>
+                        <div class="md:w-[45%] md:pl-8 bg-gray-800 p-4 rounded-lg border border-gray-700">
+                             <p class="text-gray-300 text-sm">Configuración de la instancia <strong>VM.Standard.A1.Flex</strong> en Oracle Cloud e instalación del entorno Docker.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="absolute -left-3 md:left-[50%] md:-ml-3 top-0 w-6 h-6 bg-lumi-green rounded-full border-4 border-gray-900 z-10"></div>
+                    
+                    <div class="md:flex flex-row-reverse justify-between items-start">
+                        <div class="md:w-[45%] md:text-left md:pl-8 mb-2 md:mb-0">
+                             <h3 class="text-xl font-bold text-lumi-green">Fase 2: Hardening</h3>
+                             <span class="text-sm text-gray-400">Seguridad de Red</span>
+                        </div>
+                        <div class="md:w-[45%] md:text-right md:pr-8 bg-gray-800 p-4 rounded-lg border border-gray-700">
+                             <p class="text-gray-300 text-sm">Configuración de VCN (Virtual Cloud Network). Apertura selectiva de puertos <strong>5000 (UDP)</strong> y <strong>3000 (WebSockets)</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="absolute -left-3 md:left-[50%] md:-ml-3 top-0 w-6 h-6 bg-purple-500 rounded-full border-4 border-gray-900 z-10"></div>
+                    
+                    <div class="md:flex justify-between items-start">
+                        <div class="md:w-[45%] md:text-right md:pr-8 mb-2 md:mb-0">
+                             <h3 class="text-xl font-bold text-purple-400">Fase 3: Lanzamiento</h3>
+                             <span class="text-sm text-gray-400">Producción</span>
+                        </div>
+                        <div class="md:w-[45%] md:pl-8 bg-gray-800 p-4 rounded-lg border border-gray-700">
+                             <p class="text-gray-300 text-sm">Despliegue de contenedores, restauración de backups y validación de conectividad en tiempo real.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <footer class="bg-gray-100 py-16 border-t border-gray-200 text-center">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="text-2xl font-bold text-lumi-dark mb-4">Recomendación Final</h2>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+                La arquitectura basada en Oracle Cloud representa la opción más robusta, escalable y económicamente eficiente. Se recomienda la aprobación inmediata para el despliegue.
+            </p>
+            
+            <div class="inline-block border-t-2 border-gray-300 pt-4 mt-4">
+                <p class="font-bold text-lg text-lumi-dark">Fernando Solis Morgan</p>
+                <p class="text-sm text-lumi-blue font-semibold">Ingeniero en Informática</p>
+                <p class="text-xs text-gray-500">Líder Técnico - Proyecto Luminova</p>
+            </div>
+        </div>
+        
+        <div class="mt-12 text-xs text-gray-400">
+            &copy; 2026 Luminova Project. Confidential - Internal Use Only.
+        </div>
+    </footer>
+
+    <!-- Chart Logic -->
+    <script>
+        // --- 1. Label Wrapping Utility (Mandatory) ---
+        function wrapLabel(label, maxChars = 16) {
+            if (label.length <= maxChars) return label;
+            
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxChars) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- 2. Tooltip Config Utility (Mandatory) ---
+        const commonPluginConfig = {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            },
+            legend: {
+                display: false
+            }
+        };
+
+        // --- Chart 1: RAM Comparison ---
+        const ctxRam = document.getElementById('ramChart').getContext('2d');
+        const ramData = {
+            // Apply wrapping to labels
+            labels: ['Oracle Cloud', 'Hetzner', 'DigitalOcean'].map(l => wrapLabel(l)),
+            datasets: [{
+                label: 'Memoria RAM (GB)',
+                data: [24, 4, 1],
+                backgroundColor: [
+                    '#10B981', // Oracle Green
+                    '#9CA3AF', // Gray
+                    '#9CA3AF'  // Gray
+                ],
+                borderRadius: 8,
+                barPercentage: 0.6
+            }]
+        };
+
+        new Chart(ctxRam, {
+            type: 'bar',
+            data: ramData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Horizontal bar for better label readability
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        title: { display: true, text: 'GB RAM (Capa Gratuita)' }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    ...commonPluginConfig,
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // --- Chart 2: Security Score (Doughnut) ---
+        const ctxSec = document.getElementById('securityChart').getContext('2d');
+        new Chart(ctxSec, {
+            type: 'doughnut',
+            data: {
+                labels: ['Score', 'Gap'],
+                datasets: [{
+                    data: [92, 8],
+                    backgroundColor: ['#2563EB', '#E5E7EB'],
+                    borderWidth: 0,
+                    cutout: '80%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                rotation: -90,
+                circumference: 180, // Half circle
+                plugins: commonPluginConfig
+            }
+        });
+
+        // --- Chart 3: Performance (Bar/Line Mix) ---
+        const ctxPerf = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctxPerf, {
+            type: 'bar',
+            data: {
+                labels: ['Antes', 'Después'].map(l => wrapLabel(l)),
+                datasets: [{
+                    label: 'Latencia (ms)',
+                    data: [120, 36], // ~70% reduction
+                    backgroundColor: ['#FCA5A5', '#10B981'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Latencia Promedio (ms)' }
+                    },
+                    x: { grid: { display: false } }
+                },
+                plugins: commonPluginConfig
+            }
+        });
+
+    </script>
+</body>
+</html>
