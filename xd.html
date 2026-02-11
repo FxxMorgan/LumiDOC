@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Luminova - Pedro Retamal</title>
+    
+    <!-- 1. Cargar Tailwind CSS directamente para asegurar estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Cargar Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- 3. Fuente Inter para que se vea moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Ajustes específicos para impresión (PDF) */
+        @media print {
+            body { 
+                background-color: white; 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+            .no-print { display: none !important; }
+            .break-inside-avoid { page-break-inside: avoid; }
+            .shadow-lg, .shadow-xl { box-shadow: none !important; border: 1px solid #e2e8f0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-600 min-h-screen pb-12 print:pb-0 selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Header Sticky -->
+    <header class="bg-white/90 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50 print:static print:border-none">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-5">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-200 print:hidden">
+                    <i data-lucide="server" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black text-slate-900 tracking-tight leading-none">Propuesta de Integración</h1>
+                    <div class="flex items-center gap-2 text-sm font-medium text-slate-500 mt-1">
+                        <span class="bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-xs uppercase tracking-wide">Luminova</span>
+                        <span>•</span>
+                        <span>Pedro Retamal</span>
+                        <span class="text-slate-300">•</span>
+                        <span class="text-slate-400">Feb 2026</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="window.print()" class="no-print flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-xl hover:bg-slate-800 transition-all hover:shadow-lg font-medium active:scale-95 cursor-pointer">
+                <i data-lucide="printer" class="w-4 h-4"></i>
+                <span>Guardar PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-10">
+
+        <!-- Resumen Ejecutivo (Grid Superior) -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 print:grid-cols-4">
+            
+            <!-- Card Precio -->
+            <div class="bg-white rounded-xl border border-indigo-200 bg-indigo-50/30 ring-4 ring-indigo-50/50 p-6 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Inversión Total</span>
+                        <i data-lucide="dollar-sign" class="text-indigo-300 w-5 h-5"></i>
+                    </div>
+                    <div class="text-4xl font-black text-indigo-900 tracking-tight">$840.000</div>
+                    <p class="text-sm font-bold text-indigo-600/80 mt-1 flex items-center gap-1">
+                        <span class="uppercase text-[10px] bg-indigo-100 px-1.5 rounded">CLP</span>
+                        <span>~ $805 USD</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Card Tiempo -->
+            <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Tiempo Est.</span>
+                        <i data-lucide="calendar" class="text-slate-300 w-5 h-5"></i>
+                    </div>
+                    <div class="text-4xl font-black text-slate-800 tracking-tight">16-19</div>
+                    <p class="text-sm font-medium text-slate-500 mt-1">Días calendario</p>
+                </div>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Inicio Inmediato</span>
+                </div>
+            </div>
+
+            <!-- Card Entregables -->
+            <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Entregables</span>
+                        <i data-lucide="code" class="text-slate-300 w-5 h-5"></i>
+                    </div>
+                    <div class="text-4xl font-black text-slate-800 tracking-tight">3</div>
+                    <p class="text-sm font-medium text-slate-500 mt-1">Módulos principales</p>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span class="text-[10px] font-bold uppercase tracking-wide bg-blue-100 text-blue-700 px-2 py-1 rounded-md">Backend</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wide bg-purple-100 text-purple-700 px-2 py-1 rounded-md">Frontend</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-1 rounded-md">Docs</span>
+                </div>
+            </div>
+
+            <!-- Card Garantía -->
+            <div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Garantía</span>
+                        <i data-lucide="check-circle" class="text-slate-300 w-5 h-5"></i>
+                    </div>
+                    <div class="text-4xl font-black text-slate-800 tracking-tight">30</div>
+                    <p class="text-sm font-medium text-slate-500 mt-1">Días de soporte</p>
+                </div>
+                <div class="mt-4 text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-1 rounded w-fit">
+                    Incluye Bugs
+                </div>
+            </div>
+        </div>
+
+        <!-- ANÁLISIS DE COMPETITIVIDAD (Dark Mode Block) -->
+        <div class="mb-10 bg-slate-900 rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden break-inside-avoid">
+            <!-- Background effects -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-600 rounded-full blur-[100px] opacity-20 -mr-16 -mt-16 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-600 rounded-full blur-[100px] opacity-10 -ml-16 -mb-16 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                <!-- Left Text -->
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 bg-indigo-500/20 rounded-lg text-indigo-300">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Análisis de Competitividad</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Este análisis compara la propuesta actual con alternativas de mercado, considerando tanto el <span class="text-white font-medium">conocimiento previo del sistema Luminova</span> como las <span class="text-white font-medium">tarifas internacionales</span>.
+                    </p>
+                    
+                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2">¿Por qué mi precio es mejor?</h4>
+                        <ul class="text-sm space-y-2 text-slate-300">
+                            <li class="flex gap-2 items-start">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <span><strong>0 Horas Curva Aprendizaje:</strong> Conozco la arquitectura.</span>
+                            </li>
+                            <li class="flex gap-2 items-start">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                                <span><strong>Reutilización de Código:</strong> Módulos pre-validados.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Graphs -->
+                <div class="flex-1 bg-white rounded-xl p-6 w-full shadow-lg text-slate-600">
+                    
+                    <!-- Bar 1 (Yo) -->
+                    <div class="relative mb-6">
+                        <div class="flex justify-between text-sm mb-1">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="code" class="w-3 h-3 text-indigo-600"></i>
+                                <span class="font-bold text-indigo-900">Mi Propuesta</span>
+                            </div>
+                            <span class="font-mono font-bold text-indigo-700">$840.000 CLP</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden">
+                            <div class="h-full rounded-full bg-indigo-600 relative w-[20%]"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">61 horas eficientes x Tarifa Preferencial.</p>
+                    </div>
+
+                    <!-- Bar 2 (Dev General) -->
+                    <div class="relative mb-6 opacity-70">
+                        <div class="flex justify-between text-sm mb-1">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="clock" class="w-3 h-3 text-slate-500"></i>
+                                <span class="font-bold text-slate-600">Dev Generalista</span>
+                            </div>
+                            <span class="font-mono font-bold text-slate-500">~ $1.650.000 CLP</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden">
+                            <div class="h-full rounded-full bg-slate-400 w-[45%]"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">+40 hrs investigación sistema legado.</p>
+                    </div>
+
+                    <!-- Bar 3 (USA/EU) -->
+                    <div class="relative opacity-70">
+                        <div class="flex justify-between text-sm mb-1">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="globe" class="w-3 h-3 text-slate-500"></i>
+                                <span class="font-bold text-slate-600">Pro Internacional</span>
+                            </div>
+                            <span class="font-mono font-bold text-slate-500">~ $4.800.000 CLP</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden">
+                            <div class="h-full rounded-full bg-slate-300 w-full"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Tarifa estándar ($60-$80 USD/hora).</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Masonry Grid Layout -->
+        <div class="columns-1 md:columns-2 gap-6 space-y-6 print:block print:columns-2">
+
+            <!-- 1. Alcance -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden break-inside-avoid">
+                <div class="p-5 border-b border-slate-100 flex items-center gap-3 bg-white">
+                    <div class="p-2 rounded-lg bg-slate-100 text-slate-600">
+                        <i data-lucide="code" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg tracking-tight text-slate-900">Alcance: Integración Software</h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-4">Responsabilidades Clave</h4>
+                        
+                        <!-- List Items -->
+                        <div class="flex gap-4 mb-4">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="text-slate-800 font-semibold text-[15px]">Modelos de Datos y API</p>
+                                <p class="text-slate-500 text-sm mt-0.5">Schemas MongoDB y Endpoints REST.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 mb-4">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="text-slate-800 font-semibold text-[15px]">Adaptador de Hardware</p>
+                                <p class="text-slate-500 text-sm mt-0.5">Middleware MQTT/HTTP.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 mb-4">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="text-slate-800 font-semibold text-[15px]">Frontend & Dashboard</p>
+                                <p class="text-slate-500 text-sm mt-0.5">Interfaz visual para control.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Requisitos Externos -->
+            <div class="bg-white rounded-xl shadow-sm border border-orange-200 ring-2 ring-orange-50 overflow-hidden break-inside-avoid">
+                <div class="p-5 border-b border-orange-100 flex items-center gap-3 bg-white">
+                    <div class="p-2 rounded-lg bg-orange-100 text-orange-600">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg tracking-tight text-slate-900">Dependencias Externas</h3>
+                </div>
+                <div class="p-6">
+                    <div class="bg-orange-50 p-4 rounded-lg border border-orange-100 mb-5 flex gap-3">
+                        <i data-lucide="alert-triangle" class="text-orange-500 w-5 h-5 shrink-0"></i>
+                        <div class="text-sm text-orange-900 leading-relaxed">
+                            <strong class="font-bold block mb-1">Nota Importante</strong>
+                            Estos elementos son responsabilidad del equipo eléctrico.
+                        </div>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-600">
+                            <div class="w-1.5 h-1.5 rounded-full bg-orange-300"></div> Instalación física sensores
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-600">
+                            <div class="w-1.5 h-1.5 rounded-full bg-orange-300"></div> Prog. Microcontrolador (ESP32)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-slate-600">
+                            <div class="w-1.5 h-1.5 rounded-full bg-orange-300"></div> Envío datos MQTT/HTTP
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. Desglose Costos -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden break-inside-avoid">
+                <div class="p-5 border-b border-slate-100 flex items-center gap-3 bg-white">
+                    <div class="p-2 rounded-lg bg-slate-100 text-slate-600">
+                        <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg tracking-tight text-slate-900">Desglose de Inversión</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-1">
+                        <!-- Rows -->
+                        <div class="flex justify-between items-end py-3 border-b border-slate-50">
+                            <div>
+                                <p class="font-medium text-slate-700 text-[15px]">Backend & Integración</p>
+                                <p class="text-xs text-slate-400 font-medium tracking-wide mt-0.5">28h - Node, Mongo, MQTT</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-slate-700 font-mono font-bold">$350.000</div>
+                                <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">~ $336 USD</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end py-3 border-b border-slate-50">
+                            <div>
+                                <p class="font-medium text-slate-700 text-[15px]">Frontend UI/UX</p>
+                                <p class="text-xs text-slate-400 font-medium tracking-wide mt-0.5">19h - React, Dashboard</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-slate-700 font-mono font-bold">$240.000</div>
+                                <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">~ $228 USD</div>
+                            </div>
+                        </div>
+                         <div class="flex justify-between items-end py-3 border-b border-slate-50">
+                            <div>
+                                <p class="font-medium text-slate-700 text-[15px]">Testing & Deploy</p>
+                                <p class="text-xs text-slate-400 font-medium tracking-wide mt-0.5">10h - Server</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-slate-700 font-mono font-bold">$125.000</div>
+                                <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">~ $120 USD</div>
+                            </div>
+                        </div>
+                         <div class="flex justify-between items-end py-3 border-b border-slate-50">
+                            <div>
+                                <p class="font-medium text-slate-700 text-[15px]">Contingencia</p>
+                                <p class="text-xs text-slate-400 font-medium tracking-wide mt-0.5">Margen 10%</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-slate-700 font-mono font-bold">$75.000</div>
+                                <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">~ $73 USD</div>
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="flex justify-between items-end py-3 border-t-2 border-slate-900 mt-4 pt-4">
+                            <div>
+                                <p class="font-black text-slate-900 text-lg">TOTAL SERVICIO</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-black text-indigo-700">$840.000</div>
+                                <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">~ $805 USD</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagos -->
+                    <div class="mt-8 bg-slate-50 rounded-xl p-5 border border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 text-center">Plan de Pagos Sugerido (CLP)</p>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase mb-1">Inicio (40%)</div>
+                                <div class="text-base font-black text-indigo-600">$336k</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase mb-1">Integración (40%)</div>
+                                <div class="text-base font-black text-indigo-600">$336k</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase mb-1">Final (20%)</div>
+                                <div class="text-base font-black text-indigo-600">$168k</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Arquitectura -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden break-inside-avoid">
+                 <div class="p-5 border-b border-slate-100 flex items-center gap-3 bg-white">
+                    <div class="p-2 rounded-lg bg-slate-100 text-slate-600">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg tracking-tight text-slate-900">Arquitectura</h3>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-col items-center space-y-3 py-2">
+                        <div class="w-full bg-slate-100 border border-slate-200 rounded-lg p-4 text-center">
+                            <p class="font-bold text-slate-600 text-sm">HARDWARE</p>
+                            <p class="text-xs font-medium text-slate-400 mt-1">Sensores • ESP32 • Relés</p>
+                        </div>
+                        <i data-lucide="chevron-down" class="text-slate-300 w-6 h-6 animate-bounce"></i>
+                        <div class="w-full bg-indigo-50 border-2 border-indigo-500/20 rounded-xl p-5 text-center shadow-lg relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[9px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Mi Responsabilidad</div>
+                            <div class="mb-4">
+                                <p class="font-black text-indigo-900 text-sm">ADAPTADOR</p>
+                                <p class="text-xs font-medium text-indigo-600/70">MQTT • Normalización</p>
+                            </div>
+                            <div class="border-t border-indigo-200/60 w-1/2 mx-auto my-3"></div>
+                            <div>
+                                <p class="font-black text-indigo-900 text-sm">BACKEND</p>
+                                <p class="text-xs font-medium text-indigo-600/70">API REST • WebSockets</p>
+                            </div>
+                        </div>
+                         <i data-lucide="chevron-down" class="text-slate-300 w-6 h-6 animate-bounce"></i>
+                        <div class="w-full bg-slate-900 text-white rounded-lg p-4 text-center shadow-md border border-slate-700">
+                            <p class="font-bold text-sm">FRONTEND REACT</p>
+                            <p class="text-xs text-slate-400 mt-1">Dashboard • Gráficas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Cronograma -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden break-inside-avoid">
+                 <div class="p-5 border-b border-slate-100 flex items-center gap-3 bg-white">
+                    <div class="p-2 rounded-lg bg-slate-100 text-slate-600">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg tracking-tight text-slate-900">Cronograma</h3>
+                </div>
+                <div class="p-6">
+                    <div class="relative border-l-2 border-indigo-100 ml-3 space-y-8 my-4">
+                        <!-- Items cronograma -->
+                        <div class="pl-6 relative">
+                            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 border-white shadow-sm bg-indigo-600"></div>
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-sm text-slate-800">Fase 1: Coordinación</h4>
+                                <span class="text-[10px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">2 días</span>
+                            </div>
+                            <p class="text-xs font-medium text-slate-500">Protocolo MQTT/HTTP.</p>
+                        </div>
+                        <div class="pl-6 relative">
+                            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 border-white shadow-sm bg-indigo-400"></div>
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-sm text-slate-800">Fase 2: Backend</h4>
+                                <span class="text-[10px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">5-6 días</span>
+                            </div>
+                            <p class="text-xs font-medium text-slate-500">API y Base de datos.</p>
+                        </div>
+                        <div class="pl-6 relative">
+                            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 border-white shadow-sm bg-amber-400"></div>
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-sm text-slate-800">Fase 4: Integración HW</h4>
+                                <span class="text-[10px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">3-4 días</span>
+                            </div>
+                            <p class="text-xs font-medium text-slate-500">Pruebas físicas y calibración.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Valor Agregado -->
+            <div class="bg-slate-900 text-white rounded-xl shadow-xl border border-slate-800 overflow-hidden break-inside-avoid">
+                 <div class="p-5 border-b border-slate-800 flex items-center gap-3 bg-slate-900">
+                    <div class="p-2 rounded-lg bg-slate-800 text-slate-300">
+                        <i data-lucide="wifi" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg tracking-tight text-white">Valor Agregado</h3>
+                </div>
+                <div class="p-6 space-y-5">
+                    <div class="flex gap-4">
+                        <div class="bg-slate-800 p-2.5 rounded-lg h-fit border border-slate-700 text-blue-300">
+                            <i data-lucide="database" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-[15px] text-slate-200 mb-1">Abstracción de Hardware</p>
+                            <p class="text-xs font-medium text-slate-400 leading-relaxed">Si cambias la bomba, el software no se rompe.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="bg-slate-800 p-2.5 rounded-lg h-fit border border-slate-700 text-emerald-300">
+                            <i data-lucide="activity" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-[15px] text-slate-200 mb-1">Lógica Inteligente</p>
+                            <p class="text-xs font-medium text-slate-400 leading-relaxed">Cálculo de autonomía y alertas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 border-t border-slate-200 pt-8 text-center print:mt-8">
+            <div class="flex items-center justify-center gap-2 mb-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
+                <span class="text-sm font-bold text-slate-500">Documento Confidencial</span>
+            </div>
+            <p class="text-xs text-slate-400 font-medium">Propuesta elaborada por FxxMorgan • Válida por 15 días</p>
+        </div>
+
+    </main>
+
+    <script>
+        // Inicializar iconos Lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>
